@@ -35,9 +35,10 @@ const Weather = ({
     }
   }, [weathermood]);
 
-  let sec = sunset;
-  let date = new Date(sec * 1000);
-  let timeStr = `${date.getHours()}:${date.getMinutes()}`;
+  //let sec = sunset;
+  var date = new Date();
+  let date1 = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+  var timeStr = `${date.getHours()}:${date.getMinutes()}:${date.getMinutes()}`;
   return (
     <>
       <article className="widget">
