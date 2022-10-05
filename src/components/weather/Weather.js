@@ -11,7 +11,7 @@ const Weather = ({
   sunset,
 }) => {
   const [weatherState, setWeatheState] = useState("");
-
+//Added more cases of weather icons
   useEffect(() => {
     if (weathermood) {
       switch (weathermood) {
@@ -19,13 +19,17 @@ const Weather = ({
           setWeatheState("wi-day-cloudy");
           break;
         case "Haze":
-          setWeatheState("wi-fog");
+          setWeatheState("wi-day-haze");
           break;
         case "Clear":
           setWeatheState("wi-day-sunny");
           break;
         case "Mist":
-          setWeatheState("wi-dust");
+          setWeatheState("wi-day-windy");
+          break;
+
+        case "Rain":
+          setWeatheState("wi-day-rain");
           break;
 
         default:
@@ -35,10 +39,10 @@ const Weather = ({
     }
   }, [weathermood]);
 
-  //let sec = sunset;
-  var date = new Date();
-  let date1 = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-  var timeStr = `${date.getHours()}:${date.getMinutes()}:${date.getMinutes()}`;
+  //sunset timer fixed
+  let second = sunset;
+  let date = new Date(second * 1000);
+  var timeStr = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   return (
     <>
       <article className="widget">
@@ -47,7 +51,7 @@ const Weather = ({
         </div>
         <div className="weatherInfo">
           <div className="temperature">
-            <span>{temp}&deg;</span>
+            <span> {temp}&deg;</span>
           </div>
           <div className="description">
             <div className="weatherCondition">{weathermood}</div>
@@ -66,7 +70,7 @@ const Weather = ({
               <p className="extra-info-leftside">
                 {timeStr} PM
                 <br />
-                {sunset}
+                sunset
               </p>
             </div>
 
